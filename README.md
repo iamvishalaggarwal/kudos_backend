@@ -21,8 +21,8 @@ The **Kudos App** backend is a Django REST Framework (DRF) based service that al
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd backend
+git clone https://github.com/iamvishalaggarwal/kudos_backend.git
+cd kudos_backend
 ```
 
 ### 2. Create and Activate Virtual Environment (Optional)
