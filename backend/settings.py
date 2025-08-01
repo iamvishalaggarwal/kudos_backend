@@ -26,10 +26,14 @@ SECRET_KEY = "django-insecure-u0!y80en0jp)1jb(45k@v%a%$wtrch=t_9n06e-k^*=u93n**v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
+
+CUSTOM_APPS = [
+    "kudos.apps.KudosConfig",
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -40,7 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "rest_framework_simplejwt",
-]
+    "corsheaders",
+] + CUSTOM_APPS
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -48,7 +53,10 @@ REST_FRAMEWORK = {
     ),
 }
 
+AUTH_USER_MODEL = "kudos.User"
+
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -167,3 +175,5 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
